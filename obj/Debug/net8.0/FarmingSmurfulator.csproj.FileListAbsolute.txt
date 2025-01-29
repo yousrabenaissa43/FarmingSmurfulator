@@ -1,0 +1,14 @@
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\bin\Debug\net8.0\FarmingSmurfulator.exe
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\bin\Debug\net8.0\FarmingSmurfulator.deps.json
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\bin\Debug\net8.0\FarmingSmurfulator.runtimeconfig.json
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\bin\Debug\net8.0\FarmingSmurfulator.dll
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\bin\Debug\net8.0\FarmingSmurfulator.pdb
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.AssemblyInfoInputs.cache
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.AssemblyInfo.cs
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.csproj.CoreCompileInputs.cache
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.dll
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\refint\FarmingSmurfulator.dll
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.pdb
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\FarmingSmurfulator.genruntimeconfig.cache
+C:\Users\Mega_PC\source\repos\FarmingSmurfulator\obj\Debug\net8.0\ref\FarmingSmurfulator.dll
