@@ -53,10 +53,55 @@ public class Test
         b4.AddSeed("Saffron");   // Seeds == { "Saffron": 1, "Wheat": 0 } 
         b4.AddWell(1, 1);
         b4.PlantSeed("Saffron", 0, 0);
-        Console.WriteLine(((Plant)b4.Grid[0, 0].Occupant).GrowthDays);
+        //Console.WriteLine(((Plant)b4.Grid[0, 0].Occupant).GrowthDays);
         b4.UpdateGrowthDays();
-        Console.WriteLine(((Plant)b4.Grid[0, 0].Occupant).GrowthDays);
+        // Console.WriteLine(((Plant)b4.Grid[0, 0].Occupant).GrowthDays);
 
+
+        //testing Player buyWell
+        char[,] c3 = new char[2, 2]
+        {
+            { '-', '-' },
+            { '-', 'x' }
+         };
+        Player p3 = new Player(c3, "Smurf", 150); // ActionQueue == { } 
+        //Console.WriteLine(p3.DisplayInfo());
+
+        bool well1 = p3.BuyWell(0, 1);   // ActionQueue == { { "buy", "Well", "0", "1" } } 
+        //Console.WriteLine(well1);        // well1 == true 
+        //Console.WriteLine(p3.DisplayInfo());
+
+        bool well2 = p3.BuyWell(1, 1);   // ActionQueue == { { "buy", "Well", "0", "1" } } 
+        //Console.WriteLine(well2);        // well2 == false 
+        //Console.WriteLine(p3.DisplayInfo());
+
+        //testing collect method in Player 
+
+        char[,] c5 = new char[2, 2]
+            {
+              { '-', 'W' },
+              { '-', '-' }
+             };
+        Player p5 = new Player(c5, "Smurf", 150);
+        //Console.WriteLine(p5.DisplayInfo());
+        bool collected1 = p5.TryCollectPlant(0, 1);   // ActionQueue == { { "collect", "0", "1" } } 
+        //Console.WriteLine(collected1);
+        // collected1 == true 
+        //Console.WriteLine(p5.DisplayInfo());
+
+        //testing CancelFirstAction 
+
+        char[,] c6 = new char[2, 2]
+           {
+             { '-', '-' },
+             { '-', '-' }
+           };
+        Player p6 = new Player(c6, "Smurf", 150);
+        p6.BuySeed("Wheat");    // ActionQueue == { { "buy", "Wheat" } } 
+        p6.BuySeed("Saffron");  // ActionQueue == { { "buy", "Wheat" }, { "buy", "Saffron" } } 
+        Console.WriteLine(p6.DisplayInfo());
+        p6.CancelFirstAction(); // ActionQueue == { { "buy", "Saffron" } } 
+        Console.WriteLine(p6.DisplayInfo());
     }
 
 }
