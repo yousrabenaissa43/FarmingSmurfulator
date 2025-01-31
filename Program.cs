@@ -99,9 +99,64 @@ public class Test
         Player p6 = new Player(c6, "Smurf", 150);
         p6.BuySeed("Wheat");    // ActionQueue == { { "buy", "Wheat" } } 
         p6.BuySeed("Saffron");  // ActionQueue == { { "buy", "Wheat" }, { "buy", "Saffron" } } 
-        Console.WriteLine(p6.DisplayInfo());
+        //Console.WriteLine(p6.DisplayInfo());
         p6.CancelFirstAction(); // ActionQueue == { { "buy", "Saffron" } } 
-        Console.WriteLine(p6.DisplayInfo());
+        //Console.WriteLine(p6.DisplayInfo());
+
+
+        //testing class Stonks 
+
+
+        List<(string, int)> ratings = new List<(string, int)>
+    {
+    ("HoloSmurf", 5),
+    ("HoloSmurf", 3),
+    ("League of Smurfs", 2),
+    ("HoloSmurf", 4),
+    ("Garry's Smurf", 5),
+    ("Garry's Smurf", 0),
+    ("Counter Smurf, Global Offensive", 3),
+    ("Counter Smurf, Global Offensive", 4),
+    ("Counter Smurf, Global Offensive", 4),
+    ("Counter Smurf, Global Offensive", 2),
+     };
+        Dictionary<string, List<int>> groupRating = Stonks.GroupRatings(ratings);
+        //
+        Dictionary<string, List<int>> groupRating2 = new Dictionary<string, List<int>>();
+        groupRating2.Add("HoloSmurf", new List<int>() { 5, 3, 4 });
+        groupRating2.Add("League of Smurfs", new List<int>() { 2 });
+        groupRating2.Add("Garry's Smurf", new List<int>() { 5, 0 });
+        groupRating2.Add("Counter Smurf, Global Offensive", new List<int>() { 3, 4, 4, 2 });
+        Dictionary<string, double> computed = Stonks.ComputeBayesianRating(3, groupRating2);
+
+        //tesing print board 
+
+        Board b5 = new Board(5);
+        string map1 = b5.PrintBoard();
+        Console.WriteLine("Map 1");
+        Console.WriteLine(map1);
+        b5.AddWell(1, 3);
+        b5.AddWell(4, 0);
+        string map2 = b5.PrintBoard();
+        Console.WriteLine("Map 2");
+        Console.WriteLine(map2);
+
+        b5.AddSeed("Wheat");
+        //Console.WriteLine(b5.AddSeed("Wheat"));
+        b5.PlantSeed("Wheat", 0, 2);
+        string map3 = b5.PrintBoard();
+        Console.WriteLine("Map 3");
+        Console.WriteLine(map3);
+
+        b5.UpdateGrowthDays();
+        b5.UpdateGrowthDays();
+        b5.UpdateGrowthDays();
+        string map4 = b5.PrintBoard();
+        Console.WriteLine("Map 4");
+        Console.WriteLine(map4);
     }
+    
+
+
 
 }

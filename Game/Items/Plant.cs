@@ -20,6 +20,7 @@ namespace FarmingSmurfulator.Game.Items
             {
                 throw new ArgumentException("Name must be either 'Wheat' or 'Saffron'.");
             }
+            Name = name;
             GrowthDays = growthDays;
             SellingPrice = sellingPrice;
         }

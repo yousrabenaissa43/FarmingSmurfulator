@@ -11,7 +11,7 @@ namespace FarmingSmurfulator.Game
     {
         public bool IsFree { get; set; }
         public bool IsIrrigated {  get; set; }
-        public Occupant Occupant { get; set; }
+        public Occupant? Occupant { get; set; }
 
         public Cell()
         {

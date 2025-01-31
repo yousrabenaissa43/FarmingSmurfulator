@@ -41,7 +41,7 @@ namespace FarmingSmurfulator.Game
         }
         public bool AddWell(int x, int y) 
         {
-            if (x < 0 || x >= Grid.Length || y < 0 || y >= Grid.Length )
+            if (x < 0 || x >= Grid.GetLength(0) || y < 0 || y >= Grid.GetLength(1))
             {
                 return false;
             }
@@ -59,7 +59,7 @@ namespace FarmingSmurfulator.Game
                     int newY = y + j;
 
                     // Vérifie si la cellule est dans les limites avant de l'irriguer
-                    if (newX >= 0 && newX < Grid.Length && newY >= 0 && newY < Grid.Length)
+                    if (newX >= 0 && newX < Grid.GetLength(0) && newY >= 0 && newY < Grid.GetLength(0))
                     {
                         Grid[newX, newY].IsIrrigated = true;
                     }
@@ -81,7 +81,7 @@ namespace FarmingSmurfulator.Game
 
         public bool PlantSeed(string seed, int x, int y)
         { 
-         if(!Seeds.ContainsKey(seed) || x >= Grid.Length || y >= Grid.Length) return false;
+         if(!Seeds.ContainsKey(seed) || x >= Grid.GetLength(0) || y >= Grid.GetLength(1)) return false;
          if (!Grid[x,y].IsIrrigated) return false;
 
          Cell cell = Grid[x,y];
@@ -89,11 +89,10 @@ namespace FarmingSmurfulator.Game
          if (seed == "Wheat")
             {
                 cell.Occupant = new Plant("Wheat",3,20,10); 
-                
             }
          if (seed == "Saffron")
             {
-                cell.Occupant = new Plant("Saffron",5,42, 25);
+                cell.Occupant = new Plant("Saffron",5,42,25);
             }
          return true ;
         }
@@ -107,5 +106,61 @@ namespace FarmingSmurfulator.Game
                 }
             }
         }
+        public string PrintBoard()
+        {
+            string boardString = "";
+
+            for (int i = 0; i < Grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < Grid.GetLength(1); j++)
+                {
+                    Cell cell = Grid[i, j];
+
+                    // Determine the character representation of the cell
+                    if (cell.Occupant is Plant)
+                    { 
+                        char plantChar = '-'; // Default if no valid plant found
+
+                        if (((Plant)cell.Occupant).Name == "Wheat")
+                        {
+                            if(((Plant)cell.Occupant).IsMature())
+                            { plantChar = 'W'; }
+                            else { plantChar = 'w'; }
+                        }
+                        else if (((Plant)cell.Occupant).Name == "Saffron")
+                        {
+                            plantChar = ((Plant)cell.Occupant).IsMature() ? 'S' : 's';
+                        }
+
+                        boardString += plantChar;
+                    }
+                    else if (!cell.IsFree)
+                    {
+                        boardString += 'x'; // Well
+                    }
+                    else if (cell.IsIrrigated)
+                    {
+                        boardString += 'o'; // Irrigated land
+                    }
+                    else
+                    {
+                        boardString += '-'; // Empty cell
+                    }
+
+                    // Add spacing or a newline
+                    if (j < Grid.GetLength(1) - 1)
+                        boardString += " ";
+                    else
+                        boardString += "\n";
+                }
+            }
+
+            return boardString;
+        }
+
+
+
+
+
     }
 }
